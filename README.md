@@ -23,10 +23,10 @@ ph_PLUGIN-DESCRIPTION
 
 ## Changelog
 
-See [CHANGELOG.md](https://github.com/mdibella-dev/plugin-template/blob/main/CHANGELOG.md).
+See [CHANGELOG.md](https://github.com/mdibella-dev/tailwind-safelist-generator-plugin/blob/main/CHANGELOG.md).
 
 <br>
 
 ## License
 
-This package ist released under the **MIT License**. See [LICENSE.md](https://github.com/mdibella-dev/plugin-template/blob/main/LICENSE.md) for further details.
+This package ist released under the **MIT License**. See [LICENSE.md](https://github.com/mdibella-dev/tailwind-safelist-generator-plugin/blob/main/LICENSE.md) for further details.
