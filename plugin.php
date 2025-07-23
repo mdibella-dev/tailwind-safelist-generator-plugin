@@ -17,7 +17,7 @@
  * @package tailwind-safelist-generator-plugin
  */
 
-namespace ph_PLUGIN_NAMESPACE;
+namespace tw_safelist_generator;
 
 
 /** Prevent direct access */
