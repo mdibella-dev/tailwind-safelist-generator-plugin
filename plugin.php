@@ -9,7 +9,7 @@
  * Requires at least:   ph_WORDPRESS-MINIMUM-VERSION
  * Tested up to:        ph_WORDPRESS-VERSION
  * Requires PHP:        ph_PHP-VERSION
- * Version:             ph_PLUGIN-SEMANTIC-VERSION
+ * Version:             0.0.1
  * Text Domain:         ph_PLUGIN-TEXTDOMAIN
  * Domain Path:         /languages
  *
@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) or exit;
 
 /** Variables and definitions */
 
-define( __NAMESPACE__ . '\PLUGIN_VERSION', 'ph_PLUGIN-SEMANTIC-VERSION' );
+define( __NAMESPACE__ . '\PLUGIN_VERSION', '0.0.1' );
 define( __NAMESPACE__ . '\PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( __NAMESPACE__ . '\PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

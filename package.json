@@ -1,6 +1,6 @@
 {
     "name": "ph_PLUGIN-TITLE",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "Development Scripts",
     "config" : {
         "SASS_SRC": "./assets/src/css",
