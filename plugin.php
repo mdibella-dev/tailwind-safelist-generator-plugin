@@ -10,7 +10,7 @@
  * Tested up to:        6.8.3
  * Requires PHP:        8
  * Version:             0.0.1
- * Text Domain:         ph_PLUGIN-TEXTDOMAIN
+ * Text Domain:         tw-safelist-generator
  * Domain Path:         /languages
  *
  * @author  Marco Di Bella
