@@ -6,9 +6,9 @@
  * Author:              Marco Di Bella
  * Author URI:          https://www.marcodibella.de
  * License:             MIT License
- * Requires at least:   ph_WORDPRESS-MINIMUM-VERSION
- * Tested up to:        ph_WORDPRESS-VERSION
- * Requires PHP:        ph_PHP-VERSION
+ * Requires at least:   6.6.0
+ * Tested up to:        6.8.3
+ * Requires PHP:        8
  * Version:             0.0.1
  * Text Domain:         ph_PLUGIN-TEXTDOMAIN
  * Domain Path:         /languages

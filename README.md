@@ -13,11 +13,11 @@ ph_PLUGIN-DESCRIPTION
 
 ### Requires at least
 
-* WordPress ph_WORDPRESS-MINIMUM-VERSION
+* WordPress 6.6
 
 ### Tested up to
 
-* WordPress ph_WORDPRESS-VERSION
+* WordPress 6.8.3
 
 <br>
 
