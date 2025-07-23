@@ -1,4 +1,4 @@
-# ph_PLUGIN-TITLE
+# Safelist Generator for Tailwind CSS
 ph_PLUGIN-DESCRIPTION
 
 <br>

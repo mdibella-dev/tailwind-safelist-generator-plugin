@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:         ph_PLUGIN-TITLE
- * Plugin URI:          ph_PLUGIN-URI
+ * Plugin Name:         Safelist Generator for Tailwind CSS
+ * Plugin URI:          https://github.com/mdibella-dev/tailwind-safelist-generator-plugin
  * Description:         ph_PLUGIN-DESCRIPTION.
  * Author:              Marco Di Bella
  * Author URI:          https://www.marcodibella.de

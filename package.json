@@ -1,11 +1,11 @@
 {
-    "name": "ph_PLUGIN-TITLE",
+    "name": "Safelist Generator for Tailwind CSS",
     "version": "0.0.1",
     "description": "Development Scripts",
     "config" : {
         "SASS_SRC": "./assets/src/css",
         "SASS_BLD": "./assets/build/css",
-        "PLUGIN_NAME": ""
+        "PLUGIN_NAME": "tailwind-safelist-generator-plugin"
     },
     "scripts": {
         "sass:front": "sass --style=compressed --no-source-map $npm_package_config_SASS_SRC/frontend.scss $npm_package_config_SASS_BLD/frontend.min.css",
