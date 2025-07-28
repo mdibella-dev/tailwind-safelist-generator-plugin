@@ -37,7 +37,17 @@ add_action( 'init', __NAMESPACE__ . '\plugin_init' );
  */
 
 function plugin_activation() {
-    // Do something!
+
+    $version = get_option( 'tw-sg-plugin-version' );
+
+    if ( 0 == $version ) {
+        add_option( 'tw-sg-plugin-version', PLUGIN_VERSION );
+    } else {
+        update_option( 'tw-sg-plugin-version', PLUGIN_VERSION );
+    }
+
+    add_option( 'tw-sg-scannable-post-types', [ 'post', 'page' ] );
+    add_option( 'tw-sg-filter-wp-prefixed-classes', true );
 }
 
 register_activation_hook( __FILE__, __NAMESPACE__ . '\plugin_activation' );
@@ -65,9 +75,9 @@ register_deactivation_hook( __FILE__, __NAMESPACE__ . '\plugin_deactivation' );
  */
 
 function plugin_uninstall() {
-    // Do something!
-    // Delete options!
-    // Delete custom tables!
+    delete_option( 'tw-sg-scannable-post-types' );
+    delete_option( 'tw-sg-filter-wp-prefixed-classes' );
+    delete_option( 'tw-sg-plugin-version' );
 }
 
 register_uninstall_hook( __FILE__, __NAMESPACE__ . '\plugin_uninstall' );
