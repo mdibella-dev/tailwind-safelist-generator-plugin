@@ -43,9 +43,3 @@ require_once PLUGIN_DIR . 'includes/backend.php';
 
 require_once PLUGIN_DIR . 'includes/helper.php';
 require_once PLUGIN_DIR . 'includes/technical-demonstrator.php';
-
-
-
-
-
-safelist_generator();
