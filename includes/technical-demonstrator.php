@@ -37,6 +37,8 @@ function scan_for_classes( $html, &$classes ) {
 
             if ( ! empty( $class ) ) {
 
+                /** Filter for WordPress (wp-) prefixed classes */
+
                 if ( true == get_option( 'tw-sg-filter-wp-prefixed-classes' ) ) {
                     $check = strpos( $class, 'wp-' );
 
@@ -54,7 +56,57 @@ function scan_for_classes( $html, &$classes ) {
 
 
 /**
- * The safelist generator
+ * Action hook to scan a post content for CSS classes.
+ *
+ * @since 0.0.1
+ *
+ *
+ * @param int     $post_id The post ID
+ * @param WP_POST $post    The post object
+ * @param bool    $update  Whether this is an existing post being updated
+ */
+
+function scan_for_classes_action( $post_id, $post, $update ) {
+
+    // Bail out if this is an autosave
+	if ( defined( 'DOING_AUTOSAVE' ) and DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Bail out if we don't have any scannable post types
+	$post_types = get_option( 'tw-sg-scannable-post-types' );
+
+    if ( is_array( $post_types ) and ( 0 == count( $post_types ) ) ) {
+        return;
+    }
+
+    // Bail out if this post isn't of one of the scannable post types
+    if ( ! in_array( $post->post_type, $post_types ) ) {
+        return;
+    }
+
+
+   	/** Perform a scan for CSS classes */
+
+    $classes = [];
+
+    scan_for_classes( $post->post_content, $classes );
+
+    $classes = array_unique( $classes );
+
+    asort( $classes );
+
+    $classes_string = implode( ' ', $classes );
+
+
+    // Do something with the classes
+    text_log( $classes_string );
+}
+
+
+
+/**
+ * A basic safelist generator.
  *
  * @since 0.0.1
  *
@@ -63,37 +115,36 @@ function scan_for_classes( $html, &$classes ) {
 
 function safelist_generator() {
 
-    $post_types = get_option( 'tw-sg-scannable-post-types' );
+	$post_types = get_option( 'tw-sg-scannable-post-types' );
 
-    error_log(print_r($post_types, true));
-
-    if ( 0 == count( $post_types ) ) {
+    if ( is_array( $post_types ) and ( 0 == count( $post_types ) ) ) {
         return false;
     }
 
-    // Get posts
-    $args = [
+    $posts = get_posts( [
         'post_type'   => $post_types,
         'numberposts' => -1,
-    ];
-
-    $posts = get_posts( $args );
+    ] );
 
 
-    // Scan for CSS classes
+   	/** Perform a scan for CSS classes */
+
     $classes = [];
 
     foreach ( $posts as $mypost ) {
         scan_for_classes( $mypost->post_content, $classes );
     }
 
-    // Removes double entries
     $classes = array_unique( $classes );
 
-    // Sorts the array
     asort( $classes );
 
-    text_log( implode( ' ', $classes ) );
+    $classes_string = implode( ' ', $classes );
+
+
+
+    // Do something with the classes
+    text_log( $classes_string );
 
     return true;
 }
