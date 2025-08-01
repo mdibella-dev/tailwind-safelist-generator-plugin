@@ -9,7 +9,7 @@
  * Requires at least:   6.6.0
  * Tested up to:        6.8.3
  * Requires PHP:        8
- * Version:             0.0.1
+ * Version:             0.0.2
  * Text Domain:         tw-safelist-generator
  * Domain Path:         /languages
  *
@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) or exit;
 
 /** Variables and definitions */
 
-define( __NAMESPACE__ . '\PLUGIN_VERSION', '0.0.1' );
+define( __NAMESPACE__ . '\PLUGIN_VERSION', '0.0.2' );
 define( __NAMESPACE__ . '\PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( __NAMESPACE__ . '\PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -45,3 +45,7 @@ require_once PLUGIN_DIR . 'includes/backend.php';
 
 require_once PLUGIN_DIR . 'includes/helper.php';
 require_once PLUGIN_DIR . 'includes/technical-demonstrator.php';
+
+
+
+add_action( "save_post", __NAMESPACE__ . '\scan_for_classes_action', 20, 3 );
