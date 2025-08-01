@@ -60,7 +60,6 @@ function scan_for_classes( $html, &$classes ) {
  *
  * @since 0.0.1
  *
- *
  * @param int     $post_id The post ID
  * @param WP_POST $post    The post object
  * @param bool    $update  Whether this is an existing post being updated
@@ -100,8 +99,9 @@ function scan_for_classes_action( $post_id, $post, $update ) {
 
 
     // Do something with the classes
-    text_log( $classes_string );
+    save_to_database( $post, $classes_string );
 }
+
 
 
 
@@ -142,9 +142,8 @@ function safelist_generator() {
     $classes_string = implode( ' ', $classes );
 
 
-
     // Do something with the classes
-    text_log( $classes_string );
+    save_to_database( $post, $classes_string );
 
     return true;
 }
