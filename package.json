@@ -1,6 +1,6 @@
 {
     "name": "Safelist Generator for Tailwind CSS",
-    "version": "0.02",
+    "version": "0.0.2",
     "description": "Development Scripts",
     "config" : {
         "SASS_SRC": "./assets/src/css",
