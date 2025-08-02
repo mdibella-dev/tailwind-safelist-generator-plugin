@@ -46,7 +46,3 @@ require_once PLUGIN_DIR . 'includes/backend.php';
 require_once PLUGIN_DIR . 'includes/helper.php';
 require_once PLUGIN_DIR . 'includes/database.php';
 require_once PLUGIN_DIR . 'includes/technical-demonstrator.php';
-
-
-
-add_action( "save_post", __NAMESPACE__ . '\scan_for_classes_action', 20, 3 );
