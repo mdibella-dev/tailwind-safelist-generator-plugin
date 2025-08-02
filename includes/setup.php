@@ -30,9 +30,12 @@ add_action( 'init', __NAMESPACE__ . '\plugin_init' );
 
 
 
-
 /**
  * The activation function for the plugin.
+ *
+ * This function consists of two tasks:
+ * - Creating a table in which the scanned css classes are stored.
+ * - Setting or updating the necessary plugin options.
  *
  * @since 1.0.0
  */
@@ -43,8 +46,8 @@ function plugin_activation() {
         return;
     }
 
+    /** Task 1 */
 
-    // Add table
     global $wpdb;
 
     $table_name    = $wpdb->prefix . TABLE_CLASSES;
@@ -63,8 +66,8 @@ function plugin_activation() {
         dbDelta( $sql );
     }
 
+    /** Task 2 */
 
-    // Add options
     $first_run  = empty( get_option( 'tw-sg-plugin-version' ) );
 
     if ( true === $first_run) {
@@ -73,8 +76,6 @@ function plugin_activation() {
         add_option( 'tw-sg-scannable-post-types' );
     }
 
-
-    // Set or update options
     if ( empty( get_option( 'tw-sg-filter-wp-prefixed-classes' ) ) ) {
         update_option( 'tw-sg-plugin-version', true );
     }
@@ -93,9 +94,11 @@ register_activation_hook( __FILE__, __NAMESPACE__ . '\plugin_activation' );
 /**
  * The uninstall function for the plugin.
  *
- * @since 1.0.0
+ * This function consists of two tasks:
+ * - Removing the table in which the scanned css classes are stored.
+ * - Removing the plugin options.
  *
- * @todo Remove table
+ * @since 1.0.0
  */
 
 function plugin_uninstall() {
@@ -103,6 +106,21 @@ function plugin_uninstall() {
     if ( ! current_user_can( 'delete_plugins' ) ) {
         return;
     }
+
+    /** Task 1 */
+
+    global $wpdb;
+
+    $table_name = $wpdb->prefix . TABLE_CLASSES;
+
+    if ( $table_name !== $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) ) {
+        $sql = "DROP TABLE $table_name;";
+
+        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+        dbDelta( $sql );
+    }
+
+    /** Task 2 */
 
     delete_option( 'tw-sg-scannable-post-types' );
     delete_option( 'tw-sg-filter-wp-prefixed-classes' );
