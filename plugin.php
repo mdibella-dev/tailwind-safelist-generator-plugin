@@ -9,7 +9,7 @@
  * Requires at least:   6.6.0
  * Tested up to:        6.8.3
  * Requires PHP:        8
- * Version:             0.0.2
+ * Version:             0.0.3
  * Text Domain:         tw-safelist-generator
  * Domain Path:         /languages
  *
@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) or exit;
 
 /** Variables and definitions */
 
-define( __NAMESPACE__ . '\PLUGIN_VERSION', '0.0.2' );
+define( __NAMESPACE__ . '\PLUGIN_VERSION', '0.0.3' );
 define( __NAMESPACE__ . '\PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( __NAMESPACE__ . '\PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
