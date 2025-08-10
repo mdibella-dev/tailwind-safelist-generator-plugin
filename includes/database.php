@@ -1,6 +1,6 @@
 <?php
 /**
- * Helper functions of the plugin.
+ * Database related functions of the plugin.
  *
  * @author  Marco Di Bella
  * @package tailwind-safelist-generator-plugin
@@ -17,6 +17,23 @@ defined( 'ABSPATH' ) or exit;
 
 
 /**
+ * Checks whether the database table required for the plugin exists or not.
+ *
+ * @since 0.0.3
+ *
+ * @return bool true|false
+ */
+
+function has_database_table() {
+    global $wpdb;
+           $table_name = $wpdb->prefix . TABLE_CLASSES;
+
+    return (bool) ( $table_name === $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) );
+}
+
+
+
+/**
  * Creates, change or removes a database entry.
  *
  * @since 0.0.1
@@ -25,7 +42,7 @@ defined( 'ABSPATH' ) or exit;
  * @param string  $classes_string The classes
  */
 
-function update_database( $post, $classes_string ) {
+function update_database_table( $post, $classes_string ) {
 
     global $wpdb;
 

@@ -43,6 +43,6 @@ require_once PLUGIN_DIR . 'vendor/autoload.php';
 require_once PLUGIN_DIR . 'includes/setup.php';
 require_once PLUGIN_DIR . 'includes/backend.php';
 
-require_once PLUGIN_DIR . 'includes/helper.php';
 require_once PLUGIN_DIR . 'includes/database.php';
-require_once PLUGIN_DIR . 'includes/technical-demonstrator.php';
+require_once PLUGIN_DIR . 'includes/scanner.php';
+require_once PLUGIN_DIR . 'includes/safelist.php';

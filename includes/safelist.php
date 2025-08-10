@@ -1,6 +1,6 @@
 <?php
 /**
- * Helper functions of the plugin.
+ * Safelist file related functions of the plugin.
  *
  * @author  Marco Di Bella
  * @package tailwind-safelist-generator-plugin

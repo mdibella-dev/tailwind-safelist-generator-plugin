@@ -52,7 +52,7 @@ function plugin_activation() {
     $table_name    = $wpdb->prefix . TABLE_CLASSES;
     $table_collate = $wpdb->collate;
 
-    if ( $table_name !== $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) ) {
+    if ( ! has_database_table() ) {
         $sql = "CREATE TABLE $table_name (
             post_id bigint(20) unsigned NOT NULL default '0',
             post_type varchar(20) NOT NULL default 'post',
@@ -112,7 +112,7 @@ function plugin_uninstall() {
 
     $table_name = $wpdb->prefix . TABLE_CLASSES;
 
-    if ( $table_name !== $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) ) {
+    if ( has_database_table() ) {
         $sql = "DROP TABLE $table_name;";
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );

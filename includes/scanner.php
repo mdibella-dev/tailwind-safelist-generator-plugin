@@ -1,6 +1,6 @@
 <?php
 /**
- * Demonstrates the functionality of the plugin.
+ * Class scanner rellated functions of the plugin.
  *
  * @author  Marco Di Bella
  * @package tailwind-safelist-generator-plugin
@@ -46,7 +46,6 @@ function scan_for_classes( $html, &$classes ) {
                         break;
                     }
                 }
-
                 $classes[] = $class;
             }
         }
@@ -67,19 +66,23 @@ function scan_for_classes( $html, &$classes ) {
 
 function scan_for_classes_action( $post_id, $post, $update ) {
 
-    // Bail out if this is an autosave
+    /**
+     * Bail out
+     * - if this hook was called due to an autosave
+     * - if we don't have any scannable post types
+     * - if this post isn't of one of the scannable post types
+     */
+
 	if ( defined( 'DOING_AUTOSAVE' ) and DOING_AUTOSAVE ) {
 		return;
 	}
 
-	// Bail out if we don't have any scannable post types
 	$post_types = get_option( 'tw-sg-scannable-post-types' );
 
     if ( is_array( $post_types ) and ( 0 == count( $post_types ) ) ) {
         return;
     }
 
-    // Bail out if this post isn't of one of the scannable post types
     if ( ! in_array( $post->post_type, $post_types ) ) {
         return;
     }
@@ -95,7 +98,7 @@ function scan_for_classes_action( $post_id, $post, $update ) {
 
 
     // Do something with the classes
-    if ( true == update_database( $post, $classes_string ) ) {
+    if ( true == update_database_table( $post, $classes_string ) ) {
         write_safelist();
     }
 }
