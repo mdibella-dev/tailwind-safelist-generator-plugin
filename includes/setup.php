@@ -35,6 +35,7 @@ add_action( 'init', __NAMESPACE__ . '\plugin_init' );
  * This function consists of two tasks:
  * - Creating a table in which all scanned css classes are stored.
  * - Setting or updating the necessary plugin options.
+ * - Scanning all posts for the initial time.
  *
  * @since 1.0.0
  */
@@ -84,6 +85,12 @@ function plugin_activation() {
     }
 
     update_option( 'tw-sg-plugin-version', PLUGIN_VERSION );
+
+    /** Task 3 */
+
+    if ( true === $first_run ) {
+        scan_all_posts_for_classes();
+    }
 }
 
 register_activation_hook( __FILE__, __NAMESPACE__ . '\plugin_activation' );

@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) or exit;
 
 
 /**
- * ???
+ *
  *
  * @since 0.0.1
  */

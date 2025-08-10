@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) or exit;
  * @param array  $classes The list of found classes
  */
 
-function scan_for_classes( $html, &$classes ) {
+function scan_post_for_classes( $html, &$classes ) {
 
     $matches = [];
 
@@ -64,7 +64,7 @@ function scan_for_classes( $html, &$classes ) {
  * @param bool    $update  Whether this is an existing post being updated
  */
 
-function scan_for_classes_action( $post_id, $post, $update ) {
+function scan_post_for_classes_action( $post_id, $post, $update ) {
 
     /**
      * Bail out
@@ -92,7 +92,7 @@ function scan_for_classes_action( $post_id, $post, $update ) {
 
     $classes = [];
 
-    scan_for_classes( $post->post_content, $classes );
+    scan_post_for_classes( $post->post_content, $classes );
 
     $classes_string = implode( ' ', array_unique( $classes ) );
 
@@ -103,4 +103,37 @@ function scan_for_classes_action( $post_id, $post, $update ) {
     }
 }
 
-add_action( "save_post", __NAMESPACE__ . '\scan_for_classes_action', 20, 3 );
+add_action( "save_post", __NAMESPACE__ . '\scan_post_for_classes_action', 20, 3 );
+
+
+
+/**
+ * Action hook to scan a post content for CSS classes.
+ *
+ */
+
+function scan_all_posts_for_classes() {
+
+	$post_types = get_option( 'tw-sg-scannable-post-types' );
+
+    if ( is_array( $post_types ) and ( 0 == count( $post_types ) ) ) {
+        return false;
+    }
+
+    $posts = get_posts( [
+        'post_type'   => $post_types,
+        'numberposts' => -1,
+    ] );
+
+
+   	/** Perform a scan for CSS classes */
+
+    foreach ( $posts as $post ) {
+        $classes = [];
+
+        scan_post_for_classes( $post->post_content, $classes );
+        update_database_table( $post, implode( ' ', array_unique( $classes ) ) );
+    }
+
+    return true;
+}
