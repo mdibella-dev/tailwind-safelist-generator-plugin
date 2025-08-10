@@ -22,7 +22,6 @@ defined( 'ABSPATH' ) or exit;
  */
 
 function plugin_init() {
-    // Load text domain, use relative path to the plugin's language folder
     load_plugin_textdomain( 'tw-safelist-generator', false, plugin_basename( PLUGIN_DIR ) . '/languages' );
 }
 
@@ -34,7 +33,7 @@ add_action( 'init', __NAMESPACE__ . '\plugin_init' );
  * The activation function for the plugin.
  *
  * This function consists of two tasks:
- * - Creating a table in which the scanned css classes are stored.
+ * - Creating a table in which all scanned css classes are stored.
  * - Setting or updating the necessary plugin options.
  *
  * @since 1.0.0
@@ -95,8 +94,8 @@ register_activation_hook( __FILE__, __NAMESPACE__ . '\plugin_activation' );
  * The uninstall function for the plugin.
  *
  * This function consists of two tasks:
- * - Removing the table in which the scanned css classes are stored.
- * - Removing the plugin options.
+ * - Removing the table in which all  the scanned css classes are stored.
+ * - Removing the plugin options from the WordPress database.
  *
  * @since 1.0.0
  */
