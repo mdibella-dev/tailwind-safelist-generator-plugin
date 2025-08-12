@@ -1,6 +1,6 @@
 <?php
 /**
- * Class scanner rellated functions of the plugin.
+ * CSS scanner rellated functions of the plugin.
  *
  * @author  Marco Di Bella
  * @package tailwind-safelist-generator-plugin
