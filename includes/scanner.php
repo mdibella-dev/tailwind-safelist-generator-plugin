@@ -108,8 +108,9 @@ add_action( "save_post", __NAMESPACE__ . '\scan_post_for_classes_action', 20, 3 
 
 
 /**
- * Action hook to scan a post content for CSS classes.
+ * Scans all (scannable) posts for classes and stores them into the database.
  *
+ * @since 0.0.1
  */
 
 function scan_all_posts_for_classes() {
@@ -117,7 +118,7 @@ function scan_all_posts_for_classes() {
 	$post_types = get_option( 'tw-sg-scannable-post-types' );
 
     if ( is_array( $post_types ) and ( 0 == count( $post_types ) ) ) {
-        return false;
+        return;
     }
 
     $posts = get_posts( [
@@ -134,6 +135,4 @@ function scan_all_posts_for_classes() {
         scan_post_for_classes( $post->post_content, $classes );
         update_database_table( $post, implode( ' ', array_unique( $classes ) ) );
     }
-
-    return true;
 }
