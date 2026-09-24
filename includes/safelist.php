@@ -11,7 +11,11 @@ defined( 'ABSPATH' ) or exit;
 /**
  * Creates the safelist file.
  *
- * @since 0.0.1
+ * @since   0.0.1
+ *
+ * @param   void
+ *
+ * @return  void
  */
 function write_safelist() {
     global $wpdb;

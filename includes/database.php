@@ -13,7 +13,9 @@ defined( 'ABSPATH' ) or exit;
  *
  * @since   0.0.3
  *
- * @return  bool true|false
+ * @param   void
+ *
+ * @return  bool
  */
 function has_database_table() {
     global $wpdb;
@@ -31,6 +33,8 @@ function has_database_table() {
  *
  * @param   WP_POST $post           The post object
  * @param   string  $classes_string The classes
+ *
+ * @return  bool
  */
 function update_database_table( $post, $classes_string ) {
 

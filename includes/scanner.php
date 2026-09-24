@@ -11,10 +11,12 @@ defined( 'ABSPATH' ) or exit;
 /**
  * Returns an array with all CSS classes contained in an HTML code.
  *
- * @since 0.0.1
+ * @since   0.0.1
  *
- * @param string $html    The HTML code
- * @param array  $classes The list of found classes
+ * @param   string $html    The HTML code
+ * @param   array  $classes The list of found classes
+ *
+ * @return  void
  */
 function scan_post_for_classes( $html, &$classes ) {
 
@@ -47,11 +49,13 @@ function scan_post_for_classes( $html, &$classes ) {
 /**
  * Action hook to scan a post content for CSS classes.
  *
- * @since 0.0.1
+ * @since   0.0.1
  *
- * @param int     $post_id The post ID
- * @param WP_POST $post    The post object
- * @param bool    $update  Whether this is an existing post being updated
+ * @param   int     $post_id The post ID
+ * @param   WP_POST $post    The post object
+ * @param   bool    $update  Whether this is an existing post being updated
+ *
+ * @return  void
  */
 function scan_post_for_classes_action( $post_id, $post, $update ) {
 
@@ -95,7 +99,11 @@ add_action( "save_post", __NAMESPACE__ . '\scan_post_for_classes_action', 20, 3 
 /**
  * Scans all (scannable) posts for classes and stores them into the database.
  *
- * @since 0.0.1
+ * @since   0.0.1
+ *
+ * @param   void
+ *
+ * @return  void
  */
 function scan_all_posts_for_classes() {
 
