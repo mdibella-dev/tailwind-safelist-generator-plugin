@@ -1,16 +1,8 @@
 <?php
-/**
- * Functions to activate, initiate and deactivate the plugin.
- *
- * @author  Marco Di Bella
- * @package tailwind-safelist-generator-plugin
- */
-
 namespace tw_safelist_generator;
 
 
 /** Prevent direct access */
-
 defined( 'ABSPATH' ) or exit;
 
 
@@ -20,7 +12,6 @@ defined( 'ABSPATH' ) or exit;
  *
  * @since 1.0.0
  */
-
 function plugin_init() {
     load_plugin_textdomain( 'tw-safelist-generator', false, plugin_basename( PLUGIN_DIR ) . '/languages' );
 }
@@ -39,7 +30,6 @@ add_action( 'init', __NAMESPACE__ . '\plugin_init' );
  *
  * @since 1.0.0
  */
-
 function plugin_activation() {
 
     if ( ! current_user_can( 'activate_plugins' ) ) {
@@ -106,7 +96,6 @@ register_activation_hook( __FILE__, __NAMESPACE__ . '\plugin_activation' );
  *
  * @since 1.0.0
  */
-
 function plugin_uninstall() {
 
     if ( ! current_user_can( 'delete_plugins' ) ) {

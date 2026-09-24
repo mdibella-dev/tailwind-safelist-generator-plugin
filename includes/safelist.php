@@ -1,27 +1,18 @@
 <?php
-/**
- * Safelist file related functions of the plugin.
- *
- * @author  Marco Di Bella
- * @package tailwind-safelist-generator-plugin
- */
-
 namespace tw_safelist_generator;
 
 
-/** Prevent direct access */
 
+/** Prevent direct access */
 defined( 'ABSPATH' ) or exit;
 
 
 
-
 /**
- *
+ * Creates the safelist file.
  *
  * @since 0.0.1
  */
-
 function write_safelist() {
     global $wpdb;
 

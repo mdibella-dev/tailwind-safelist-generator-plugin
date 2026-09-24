@@ -1,18 +1,10 @@
 <?php
-/**
- * CSS scanner rellated functions of the plugin.
- *
- * @author  Marco Di Bella
- * @package tailwind-safelist-generator-plugin
- */
-
 namespace tw_safelist_generator;
 
 
+
 /** Prevent direct access */
-
 defined( 'ABSPATH' ) or exit;
-
 
 
 
@@ -24,7 +16,6 @@ defined( 'ABSPATH' ) or exit;
  * @param string $html    The HTML code
  * @param array  $classes The list of found classes
  */
-
 function scan_post_for_classes( $html, &$classes ) {
 
     $matches = [];
@@ -38,7 +29,6 @@ function scan_post_for_classes( $html, &$classes ) {
             if ( ! empty( $class ) ) {
 
                 /** Filter for WordPress (wp-) prefixed classes */
-
                 if ( true == get_option( 'tw-sg-filter-wp-prefixed-classes' ) ) {
                     $check = strpos( $class, 'wp-' );
 
@@ -63,7 +53,6 @@ function scan_post_for_classes( $html, &$classes ) {
  * @param WP_POST $post    The post object
  * @param bool    $update  Whether this is an existing post being updated
  */
-
 function scan_post_for_classes_action( $post_id, $post, $update ) {
 
     /**
@@ -72,7 +61,6 @@ function scan_post_for_classes_action( $post_id, $post, $update ) {
      * - if we don't have any scannable post types
      * - if this post isn't of one of the scannable post types
      */
-
 	if ( defined( 'DOING_AUTOSAVE' ) and DOING_AUTOSAVE ) {
 		return;
 	}
@@ -87,15 +75,12 @@ function scan_post_for_classes_action( $post_id, $post, $update ) {
         return;
     }
 
-
    	/** Perform a scan for CSS classes */
-
     $classes = [];
 
     scan_post_for_classes( $post->post_content, $classes );
 
     $classes_string = implode( ' ', array_unique( $classes ) );
-
 
     // Do something with the classes
     if ( true == update_database_table( $post, $classes_string ) ) {
@@ -112,7 +97,6 @@ add_action( "save_post", __NAMESPACE__ . '\scan_post_for_classes_action', 20, 3 
  *
  * @since 0.0.1
  */
-
 function scan_all_posts_for_classes() {
 
 	$post_types = get_option( 'tw-sg-scannable-post-types' );
@@ -128,7 +112,6 @@ function scan_all_posts_for_classes() {
 
 
    	/** Perform a scan for CSS classes */
-
     foreach ( $posts as $post ) {
         $classes = [];
 

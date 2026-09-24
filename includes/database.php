@@ -1,29 +1,20 @@
 <?php
-/**
- * Database related functions of the plugin.
- *
- * @author  Marco Di Bella
- * @package tailwind-safelist-generator-plugin
- */
-
 namespace tw_safelist_generator;
 
 
+
 /** Prevent direct access */
-
 defined( 'ABSPATH' ) or exit;
-
 
 
 
 /**
  * Checks whether the database table required for the plugin exists or not.
  *
- * @since 0.0.3
+ * @since   0.0.3
  *
- * @return bool true|false
+ * @return  bool true|false
  */
-
 function has_database_table() {
     global $wpdb;
            $table_name = $wpdb->prefix . TABLE_CLASSES;
@@ -36,12 +27,11 @@ function has_database_table() {
 /**
  * Creates, change or removes a database entry.
  *
- * @since 0.0.1
+ * @since   0.0.1
  *
- * @param WP_POST $post           The post object
- * @param string  $classes_string The classes
+ * @param   WP_POST $post           The post object
+ * @param   string  $classes_string The classes
  */
-
 function update_database_table( $post, $classes_string ) {
 
     global $wpdb;
