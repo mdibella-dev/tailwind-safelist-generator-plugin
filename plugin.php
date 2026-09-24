@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * Plugin Name:         Safelist Generator for Tailwind CSS
  * Plugin URI:          https://github.com/mdibella-dev/tailwind-safelist-generator-plugin
  * Author:              Marco Di Bella
@@ -11,9 +11,6 @@
  * Version:             0.0.3
  * Text Domain:         tw-safelist-generator
  * Domain Path:         /languages
- *
- * @author  Marco Di Bella
- * @package tailwind-safelist-generator-plugin
  */
 
 namespace tw_safelist_generator;
